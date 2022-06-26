@@ -1,10 +1,12 @@
 <template>
   <p>Hello</p>
+  <p>Hello</p>
+  <p>Hello</p>
 </template>
 
 <script>
 export default {
-  name: "HelloWorld",
+  name: "RatingSurvey",
 };
 </script>
 
