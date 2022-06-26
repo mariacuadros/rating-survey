@@ -13,7 +13,15 @@
       appreciated to help us improve our offering!
     </p>
     <div class="buttons-container">
-      <button class="rating-button">1</button>
+      <button
+        class="rating-button"
+        v-for="(ratingValue, id) in ratingValues"
+        :key="id"
+        :class="{ 'selected-rating-button': ratingValue.clicked }"
+        v-on:click="selectRating(ratingValue.rating)"
+      >
+        {{ ratingValue.rating }}
+      </button>
     </div>
     <button class="submit-button">SUBMIT</button>
   </section>
@@ -22,6 +30,29 @@
 <script>
 export default {
   name: "RatingSurvey",
+  data() {
+    return {
+      ratingValues: [
+        { rating: 1, clicked: false },
+        { rating: 2, clicked: false },
+        { rating: 3, clicked: false },
+        { rating: 4, clicked: false },
+        { rating: 5, clicked: false },
+      ],
+    };
+  },
+
+  methods: {
+    selectRating(rating) {
+      for (let i = 0; i < this.ratingValues.length; i++) {
+        if (this.ratingValues[i].rating == rating) {
+          this.ratingValues[i].clicked = true;
+        } else {
+          this.ratingValues[i].clicked = false;
+        }
+      }
+    },
+  },
 };
 </script>
 
@@ -46,8 +77,8 @@ export default {
 .star-icon-container {
   background-color: var(--color-medium-grey);
   border-radius: 50%;
-  height: 35px;
-  width: 35px;
+  height: 40px;
+  width: 40px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -66,21 +97,28 @@ export default {
 .buttons-container {
   display: flex;
   justify-content: space-between;
+  width: 100%;
   margin: 1.5em 0;
 }
 
 .rating-button {
-  background-color: var(--color-medium-grey);
   border-radius: 50%;
   border: none;
-  height: 35px;
-  width: 35px;
+  height: 40px;
+  width: 40px;
   color: var(--color-light-grey);
+  background-color: var(--color-medium-grey);
+}
+
+.selected-rating-button {
+  color: var(--color-white);
+  background-color: var(--color-light-grey);
 }
 
 .rating-button:hover {
   background-color: var(--color-orange);
   color: var(--color-white);
+  cursor: pointer;
 }
 
 .submit-button {
@@ -88,7 +126,7 @@ export default {
   border-radius: 20px;
   border: none;
   width: 100%;
-  height: 35px;
+  height: 40px;
   color: var(--color-white);
 }
 </style>
