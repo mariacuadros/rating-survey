@@ -129,4 +129,8 @@ export default {
   height: 40px;
   color: var(--color-white);
 }
+.submit-button:hover {
+  background-color: var(--color-white);
+  color: var(--color-orange);
+}
 </style>
