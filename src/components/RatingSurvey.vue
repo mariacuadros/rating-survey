@@ -1,29 +1,46 @@
 <template>
-  <section class="survey-container">
-    <div class="star-icon-container">
+  <section class="main-container">
+    <div class="survey-container" v-if="!submited">
+      <div class="star-icon-container">
+        <img
+          class="star-icon"
+          src="@/assets/images/icon-star.svg"
+          alt="Star Icon"
+        />
+      </div>
+      <h1 class="survey-title">How did we do?</h1>
+      <p class="survey-description">
+        Please let us know how we did with your support request. All feedback is
+        appreciated to help us improve our offering!
+      </p>
+      <div class="buttons-container">
+        <button
+          class="rating-button"
+          v-for="(ratingValue, id) in ratingValues"
+          :key="id"
+          :class="{ 'selected-rating-button': ratingValue.clicked }"
+          v-on:click="selectRating(ratingValue.rating)"
+        >
+          {{ ratingValue.rating }}
+        </button>
+      </div>
+      <button class="submit-button" v-on:click="submitResult()">SUBMIT</button>
+    </div>
+    <div class="thanks-container" v-else>
       <img
-        class="star-icon"
-        src="@/assets/images/icon-star.svg"
-        alt="Star Icon"
+        class="thanks-image"
+        src="@/assets/images/illustration-thank-you.svg"
+        alt="Thank you image"
       />
-    </div>
-    <h1 class="survey-title">How did we do?</h1>
-    <p class="survey-description">
-      Please let us know how we did with your support request. All feedback is
-      appreciated to help us improve our offering!
-    </p>
-    <div class="buttons-container">
-      <button
-        class="rating-button"
-        v-for="(ratingValue, id) in ratingValues"
-        :key="id"
-        :class="{ 'selected-rating-button': ratingValue.clicked }"
-        v-on:click="selectRating(ratingValue.rating)"
+      <p class="survey-result">
+        You selected {{ selectedRating }} out of {{ bestRating }}
+      </p>
+      <h1 class="thanks">Thank you!</h1>
+      <span
+        >We apreciate you taking the time to give a rating.If you ever need more
+        support, don't hesitate to get in tpuch!</span
       >
-        {{ ratingValue.rating }}
-      </button>
     </div>
-    <button class="submit-button">SUBMIT</button>
   </section>
 </template>
 
@@ -39,7 +56,14 @@ export default {
         { rating: 4, clicked: false },
         { rating: 5, clicked: false },
       ],
+      submited: false,
+      selectedRating: 0,
     };
+  },
+  computed: {
+    bestRating() {
+      return this.ratingValues.length;
+    },
   },
 
   methods: {
@@ -52,13 +76,21 @@ export default {
         }
       }
     },
+    submitResult() {
+      for (let i = 0; i < this.ratingValues.length; i++) {
+        if (this.ratingValues[i].clicked == true) {
+          this.selectedRating = this.ratingValues[i].rating;
+        }
+        this.submited = true;
+      }
+    },
   },
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.survey-container {
+.main-container {
   --color-white: hsl(0, 0%, 100%);
   --color-light-grey: hsl(217, 12%, 63%);
   --color-medium-grey: hsl(218, 12%, 32%);
@@ -70,6 +102,9 @@ export default {
   padding: 2em;
   margin: 1.5em;
   color: var(--color-white);
+}
+.survey-container {
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -132,5 +167,19 @@ export default {
 .submit-button:hover {
   background-color: var(--color-white);
   color: var(--color-orange);
+}
+.thanks-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.survey-result {
+  color: var(--color-orange);
+  background-color: var(--color-medium-grey);
+  padding: 0.3em;
+  border-radius: 20px;
+  width: 60%;
+  min-width: 185px;
+  margin-top: 1.5em;
 }
 </style>
