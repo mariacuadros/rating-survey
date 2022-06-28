@@ -46,7 +46,7 @@ export default {
 };
 </script>
 <style>
-html {
+body {
   --color-very-dark-blue: hsl(216, 12%, 8%);
   background-color: var(--color-very-dark-blue);
 }
