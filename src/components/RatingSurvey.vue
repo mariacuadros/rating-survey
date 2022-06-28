@@ -47,15 +47,11 @@
 <script>
 export default {
   name: "RatingSurvey",
+  props: {
+    ratingValues: Object,
+  },
   data() {
     return {
-      ratingValues: [
-        { rating: 1, clicked: false },
-        { rating: 2, clicked: false },
-        { rating: 3, clicked: false },
-        { rating: 4, clicked: false },
-        { rating: 5, clicked: false },
-      ],
       submited: false,
       selectedRating: 0,
     };
@@ -68,13 +64,7 @@ export default {
 
   methods: {
     selectRating(rating) {
-      for (let i = 0; i < this.ratingValues.length; i++) {
-        if (this.ratingValues[i].rating == rating) {
-          this.ratingValues[i].clicked = true;
-        } else {
-          this.ratingValues[i].clicked = false;
-        }
-      }
+      this.$emit("selectRating", rating);
     },
     submitResult() {
       for (let i = 0; i < this.ratingValues.length; i++) {
@@ -88,7 +78,6 @@ export default {
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .main-container {
   --color-white: hsl(0, 0%, 100%);
