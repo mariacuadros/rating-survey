@@ -52,6 +52,10 @@ body {
 }
 .home {
   max-width: 400px;
-  margin: 6em auto;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
 }
 </style>
