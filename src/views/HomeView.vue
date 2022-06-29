@@ -3,24 +3,40 @@
     <RatingSurvey
       class="ratingSurvey"
       :ratingValues="ratingValues"
-      v-on:selectRating="selectRating"
+      @selectRating="selectRating"
+      @submitResult="submitResult"
+      v-if="!submited"
+    />
+    <ThankYou
+      :bestRating="bestRating"
+      :selectedRating="selectedRatingValue"
+      v-else
     />
   </div>
 </template>
 
 <script>
-import RatingSurvey from "@/components/RatingSurvey.vue";
 import surveyServices from "@/services/surveyServices";
+import RatingSurvey from "@/components/RatingSurvey.vue";
+import ThankYou from "@/components/ThankYou.vue";
 
 export default {
   name: "HomeView",
   components: {
     RatingSurvey,
+    ThankYou,
   },
   data() {
     return {
       ratingValues: null,
+      selectedRatingValue: 0,
+      submited: false,
     };
+  },
+  computed: {
+    bestRating() {
+      return this.ratingValues.length;
+    },
   },
   created() {
     surveyServices
@@ -34,12 +50,21 @@ export default {
   },
   methods: {
     selectRating(rating) {
+      this.selectedRatingValue = rating;
       for (let i = 0; i < this.ratingValues.length; i++) {
         if (this.ratingValues[i].rating == rating) {
           this.ratingValues[i].clicked = true;
         } else {
           this.ratingValues[i].clicked = false;
         }
+      }
+    },
+    submitResult() {
+      for (let i = 0; i < this.ratingValues.length; i++) {
+        if (this.ratingValues[i].clicked == true) {
+          this.selectedRating = this.ratingValues[i].rating;
+        }
+        this.submited = true;
       }
     },
   },

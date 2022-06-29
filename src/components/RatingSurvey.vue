@@ -1,6 +1,6 @@
 <template>
   <section class="main-container">
-    <div class="survey-container" v-if="!submited">
+    <div class="survey-container">
       <div class="star-icon-container">
         <img
           class="star-icon"
@@ -26,21 +26,6 @@
       </div>
       <button class="submit-button" v-on:click="submitResult()">SUBMIT</button>
     </div>
-    <div class="thanks-container" v-else>
-      <img
-        class="thanks-image"
-        src="@/assets/images/illustration-thank-you.svg"
-        alt="Thank you image"
-      />
-      <p class="survey-result">
-        You selected {{ selectedRating }} out of {{ bestRating }}
-      </p>
-      <h1 class="thanks">Thank you!</h1>
-      <span
-        >We apreciate you taking the time to give a rating.If you ever need more
-        support, don't hesitate to get in tpuch!</span
-      >
-    </div>
   </section>
 </template>
 
@@ -52,14 +37,8 @@ export default {
   },
   data() {
     return {
-      submited: false,
       selectedRating: 0,
     };
-  },
-  computed: {
-    bestRating() {
-      return this.ratingValues.length;
-    },
   },
 
   methods: {
@@ -67,12 +46,7 @@ export default {
       this.$emit("selectRating", rating);
     },
     submitResult() {
-      for (let i = 0; i < this.ratingValues.length; i++) {
-        if (this.ratingValues[i].clicked == true) {
-          this.selectedRating = this.ratingValues[i].rating;
-        }
-        this.submited = true;
-      }
+      this.$emit("submitResult", true);
     },
   },
 };
