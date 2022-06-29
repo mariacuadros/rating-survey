@@ -135,13 +135,13 @@ export default {
 }
 
 .selected-rating-button {
+  background-color: var(--color-orange);
   color: var(--color-white);
-  background-color: var(--color-light-grey);
 }
 
 .rating-button:hover {
-  background-color: var(--color-orange);
   color: var(--color-white);
+  background-color: var(--color-light-grey);
   cursor: pointer;
 }
 
@@ -152,6 +152,7 @@ export default {
   width: 100%;
   height: 40px;
   color: var(--color-white);
+  cursor: pointer;
 }
 .submit-button:hover {
   background-color: var(--color-white);
