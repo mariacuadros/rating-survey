@@ -13,7 +13,7 @@ This is a solution to the [Interactive rating component challenge on Frontend Me
  - [Project setup](#project-setup)
 
 ## Overview
-This project was implemented using Vue CLI. I also used a mock [API] (https://my-json-server.typicode.com/mariacuadroszm/test-api/). I developed this challenge to put into practice my recently acquired Vue knowledge.
+This project was implemented using Vue CLI. I also used a mock [API](https://my-json-server.typicode.com/mariacuadroszm/test-api/). I developed this challenge to put into practice my recently acquired Vue knowledge.
 
 ### The challenge
 
