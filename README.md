@@ -12,9 +12,6 @@ This is a solution to the [Interactive rating component challenge on Frontend Me
   - [Continued development](#continued-development)
  - [Project setup](#project-setup)
 
-
-**Note: Delete this note and update the table of contents based on what sections you keep.**
-
 ## Overview
 This project was implemented using Vue CLI. I also used a mock [API] (https://my-json-server.typicode.com/mariacuadroszm/test-api/). I developed this challenge to put into practice my recently acquired Vue knowledge.
 
