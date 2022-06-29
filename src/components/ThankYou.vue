@@ -32,3 +32,30 @@ export default {
   },
 };
 </script>
+<style scoped>
+.thanks-container {
+  --color-white: hsl(0, 0%, 100%);
+  --color-light-grey: hsl(217, 12%, 63%);
+  --color-medium-grey: hsl(218, 12%, 32%);
+  --color-dark-blue: hsl(213, 19%, 18%);
+  --color-very-dark-blue: hsl(216, 12%, 8%);
+  --color-orange: hsl(25, 97%, 53%);
+  background-color: var(--color-dark-blue);
+  border-radius: 20px;
+  padding: 2em;
+  margin: 1.5em;
+  color: var(--color-white);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.survey-result {
+  color: var(--color-orange);
+  background-color: var(--color-medium-grey);
+  padding: 0.3em;
+  border-radius: 20px;
+  width: 60%;
+  min-width: 185px;
+  margin-top: 1.5em;
+}
+</style>

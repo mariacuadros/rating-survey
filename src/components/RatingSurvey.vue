@@ -132,18 +132,4 @@ export default {
   background-color: var(--color-white);
   color: var(--color-orange);
 }
-.thanks-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-.survey-result {
-  color: var(--color-orange);
-  background-color: var(--color-medium-grey);
-  padding: 0.3em;
-  border-radius: 20px;
-  width: 60%;
-  min-width: 185px;
-  margin-top: 1.5em;
-}
 </style>
