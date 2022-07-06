@@ -18,7 +18,6 @@
           class="rating-button"
           v-for="(ratingValue, id) in ratingValues"
           :key="id"
-          :class="{ 'selected-rating-button': ratingValue.clicked }"
           v-on:click="selectRating(ratingValue.rating)"
         >
           {{ ratingValue.rating }}
@@ -108,7 +107,7 @@ export default {
   background-color: var(--color-medium-grey);
 }
 
-.selected-rating-button {
+.rating-button:focus {
   background-color: var(--color-orange);
   color: var(--color-white);
 }

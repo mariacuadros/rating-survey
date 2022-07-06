@@ -11,7 +11,7 @@
     <h1 class="thanks">Thank you!</h1>
     <span
       >We apreciate you taking the time to give a rating.If you ever need more
-      support, don't hesitate to get in tpuch!</span
+      support, don't hesitate to get in touch!</span
     >
   </div>
 </template>
